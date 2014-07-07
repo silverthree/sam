@@ -24,7 +24,7 @@ public class DemoLabelDecoratorPreferencePage
 {
   private Button displayTextLabelInformation_;
   private Button displayProjectInformation_;
-  
+
   private boolean fileLabelsToDisplay_;
   private boolean projectToDisplay_;
 
@@ -62,22 +62,22 @@ public class DemoLabelDecoratorPreferencePage
 	public void init(IWorkbench arg0)
 	{
 	}
-  
+
   /**
    * @see org.eclipse.jface.preference.PreferencePage#createContents(Composite)
    */
   protected Control createContents (Composite parent)
   {
     Composite main = GuiFactory.getInstance().createComposite(parent, 1);
-    
+
     Label informationLabel = new Label (main, SWT.NONE);
-    informationLabel.setText ("You can control the decorations that should be applied"); 
+    informationLabel.setText ("You can control the decorations that should be applied");
     Label informationLabel2 = new Label (main, SWT.NONE);
     informationLabel2.setText ("to your project by setting correct preferences");
-    
+
     Label spacer = new Label(main, SWT.NONE);
     spacer.setText("");
-    
+
     createDisplayProjectName(main);
     createDisplayOwnerName (main);
 
@@ -86,7 +86,7 @@ public class DemoLabelDecoratorPreferencePage
 
   /**
    * Create Checkbox for displaying owner name
-   */ 
+   */
   private void createDisplayOwnerName (Composite main)
   {
     displayTextLabelInformation_ = new Button(main, SWT.CHECK);
@@ -94,15 +94,15 @@ public class DemoLabelDecoratorPreferencePage
     displayTextLabelInformation_.setSelection (
       DemoStore.getInstance().shouldDisplayTextLabel());
   }
-  
+
   /**
-   * Create the Display Project Name 
-   * 
+   * Create the Display Project Name
+   *
    * @param main Composite on which the control needs to be placed
-   */ 
+   */
   private void createDisplayProjectName (Composite main)
   {
-    
+
     displayProjectInformation_ = new Button(main, SWT.CHECK);
     displayProjectInformation_.setText ("Show Decorators with Project Name");
     displayProjectInformation_.setSelection (
@@ -111,15 +111,15 @@ public class DemoLabelDecoratorPreferencePage
 
   /**
    * Method executed when user clicks on ok button
-   */   
+   */
   public boolean performOk()
   {
     fileLabelsToDisplay_ = displayTextLabelInformation_.getSelection();
     projectToDisplay_ = displayProjectInformation_.getSelection();
-    
+
     DemoStore.getInstance().setDisplayTextLabel(
       displayTextLabelInformation_.getSelection());
-    DemoStore.getInstance().setDisplayProject 
+    DemoStore.getInstance().setDisplayProject
       (displayProjectInformation_.getSelection());
     DemoLightWeightDecorator demoDecorator = DemoLightWeightDecorator.getDemoDecorator();
     if(demoDecorator != null)
@@ -128,13 +128,14 @@ public class DemoLabelDecoratorPreferencePage
     }
     return true;
  }
-  
+
   /**
    * Method invoked when the user clicks on Apply
-   */ 
+   */
   protected void performApply ()
   {
-    MessageDialog.openInformation (getShell(), "Decorations", 
+	  //test
+    MessageDialog.openInformation (getShell(), "Decorations",
       "Press OK in the Individiual Decorator preference page to apply preferences on decoration");
   }
 }
