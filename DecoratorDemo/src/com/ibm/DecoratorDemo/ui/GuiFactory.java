@@ -9,13 +9,14 @@ import org.eclipse.swt.widgets.Text;
 
 /**
  * @author balajik
- * 
+ *
  * Factory Class to create Gui Components
  *
  */
 public class GuiFactory
 {
-  
+
+
   private static GuiFactory instance_ = null;
 
   private GuiFactory()
@@ -33,7 +34,7 @@ public class GuiFactory
 
 	/**
    * Create a Composite
-   */ 
+   */
   public Composite createComposite(Composite parent, int numColumns)
   {
     Composite composite = new Composite(parent, SWT.NULL);
@@ -50,10 +51,10 @@ public class GuiFactory
     composite.setLayoutData(data);
     return composite;
   }
-  
+
   /**
    * Create a Text Field
-   */ 
+   */
   public Text createTextField(Composite parent)
   {
     Text text = new Text(parent, SWT.SINGLE | SWT.BORDER);
