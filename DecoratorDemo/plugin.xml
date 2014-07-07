@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin
+   id="DecoratorDemo"
+   name="DecoratorDemo"
+   version="1.0.0"
+   class="com.ibm.DecoratorDemo.core.DecoratorPlugin">
+
+   <runtime>
+      <library name="DecoratorDemo.jar"/>
+   </runtime>
+   
+   <!-- Some of the required plugins -->
+   <requires>
+      <import plugin="org.eclipse.core.runtime"/>
+      <import plugin="org.eclipse.core.boot"/>
+      <import plugin="org.eclipse.ui"/>
+      <import plugin="org.eclipse.team.core"/>
+      <import plugin="org.eclipse.core.resources"/>
+   </requires>
+   
+   <!-- Contribute our own LightweightDecorator (From 2.1) -->
+   <extension 
+	    point="org.eclipse.ui.decorators">
+		
+		<decorator
+			adaptable="true"
+			label="%DecoratorDemo.name"
+			objectClass="org.eclipse.core.resources.IResource"
+			state="false"
+			lightweight="true"
+			class="com.ibm.DecoratorDemo.ui.Decorators.DemoLightWeightDecorator"
+			id="com.ibm.decoratordemo.ui.decorator.demodecorator"
+			location="TOP_LEFT"> 
+			<description>
+				A Light weight Decorator example
+			</description>		
+           
+		</decorator>
+	</extension>
+	
+	
+	<!-- Contribute your own decorator 
+	<extension 
+	    point="org.eclipse.ui.decorators">
+		
+		<decorator
+			adaptable="true"
+			label="%DecoratorDemo.name"
+			objectClass="org.eclipse.core.resources.IResource"
+			state="false"
+			class="com.ibm.DecoratorDemo.ui.Decorators.DemoDecorator"
+			id="com.ibm.decoratordemog.ui.decorator.demodecorator">
+			
+			<enablement/>
+        </decorator>
+	</extension>
+	-->
+	
+	<!-- ************** Global Preferences *************** -->
+   <extension point="org.eclipse.ui.preferencePages">
+		<page id="com.ibm.DecoratorDemo.ui.DemoGlobalPreferencePage"
+		      name="DecoratorDemo"
+		      class="com.ibm.DecoratorDemo.ui.DemoGlobalPreferencePage"/>
+   </extension>
+	
+	<!-- Individual Decorator Preference Page -->	
+  	<extension point="org.eclipse.ui.preferencePages">
+   		<page id="com.ibm.DecoratorDemo.ui.DemoLabelDecoratorPreferencePage"
+   			name="Label Decorator Preference"
+   			category="com.ibm.DecoratorDemo.ui.DemoGlobalPreferencePage"
+   			class="com.ibm.DecoratorDemo.ui.DemoLabelDecoratorPreferencePage"/>
+   	</extension>
+   	
+      
+   <!-- *********************** File Property Page ************** -->
+	<extension point="org.eclipse.ui.propertyPages">
+	
+	   <page 
+	   		name="Decorator Demo File Properties"
+	   		id="com.ibm.DecoratorDemo.ui.DemoFilePropertiesPage"
+			objectClass="org.eclipse.core.resources.IFile"
+			class="com.ibm.DecoratorDemo.ui.DemoFilePropertyPage" 
+			adaptable="true">
+		</page>
+	</extension>
+</plugin>
